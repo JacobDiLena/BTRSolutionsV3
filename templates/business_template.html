@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Export Businesses{% endblock title %}
+
+{% block content %}
+
+<h1>Business Results</h1>
+
+<a href="{% url 'business_export' %}" class="btn btn-primary">Export to Excel</a>
+
+{% endblock content %}

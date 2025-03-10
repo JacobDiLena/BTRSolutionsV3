@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Test Form{% endblock title %}
+
+{% block content %}
+
+
+    <h1>My Model List</h1>
+    <form method="get">
+        <!--{{ form.as_p }}-->
+        <label for="sunbiz_id">Sunbiz ID</label>
+        <input type="text" name="sunbiz_id" placeholder="Enter SunBiz ID">
+        <br>
+        <br>
+        <label for="Unique_ID">Unique ID</label>
+        <input type="text" name="Unique_ID" placeholder="Enter Unique ID">
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Find Business</button>
+        <br>
+        <br>
+        <a href="{% url 'business_form_input' %}"><button class="btn btn-primary">Reset</button></a>
+    </form>
+
+    <table id="Business" class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th>SunBiz ID</th>
+          <th>Business Name</th>
+          <th>Unique ID</th>
+          <th>Amount Owed</th>
+          <th>Edit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% if objects %}
+            {% for obj in objects %}
+                <tr>
+                <td>{{ obj.sunbiz_id }}</td>
+                <td>{{ obj.business_name }}</td>
+                <td>{{ obj.Unique_ID }}</td>
+                <td>${{ obj.get_btr|floatformat:2 }}</td>
+                <td><a href="{% url 'business_edit' obj.pk %}">Edit</a></td>
+
+
+                </tr>
+            {% endfor %}
+        {% else %}
+        {% endif %}
+    <br/>
+<br/>
+
+{% endblock content %}

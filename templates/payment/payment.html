@@ -1,0 +1,15 @@
+<!-- templates/payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make a Payment</title>
+</head>
+<body>
+    <h1>Pay Your Balance</h1>
+    <form action="{% url 'create-checkout-session' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Pay Now</button>
+    </form>
+</body>
+</html>

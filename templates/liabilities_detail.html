@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="article-entry">
+    <h2>{{ liabilities.title }}</h2>
+    <p>{{ liabilities.amount }}</p>
+    
+</div>
+
+<p><a href="{% url 'liabilities_edit' liabilities.pk %}">Edit</a> | <a href="{% url 'liabilities_delete' liabilities.pk %}">Delete</a></p>
+<p>Back to <a href="{% url 'liabilities_list' %}">All Liabilities</a>.</p>
+
+
+{% endblock content %}

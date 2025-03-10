@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br/>
+<br/>
+<h1 style="text-align: center;">Budget Snapshot</h1>
+<br/>
+<br/>
+{% if ending_savings >= 0 %}
+<h3 style="text-align: center;">Total Estimated Monthly Savings</h3><h3 style="color: green;text-align: center;">${{ ending_savings|floatformat:2 }}</h3>
+
+
+{% else %}
+<h3 style="text-align: center;">Total Estimated Monthly Savings</h3><h3 style="color: red;text-align: center;">${{ ending_savings|floatformat:2 }}</h3>
+{% endif %}
+
+<br/>
+<br/>
+<h1 style="text-align: center;">Income</h1>
+<table id="Income" class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Income Name</th>
+      <th>Amount</th>
+    </tr>
+</thead>
+<tbody>
+{% for income in incomes %}
+    <tr>
+      <td>{{ income.title }}</td>
+      <td>${{ income.amount|floatformat:2 }}</td>
+    </tr>
+{% endfor %}
+    <tr>
+        <td><strong>Total Income</strong></td>
+        <td><strong>${{ total_income|floatformat:2 }}</strong></td>
+    </tr>
+</tbody>
+  </table>
+<br/>
+<br/>
+<h1 style="text-align: center;">Fixed Expenses</h1>
+<table class="table table-striped" id="Fixed_Expenses">
+    <thead class="thead-dark">
+        <tr>
+            <th>Fixed Expense</th>
+            <th>Amount</th>
+            <th>Paid?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fixed_expense in fixed_expenses %}
+        <tr>
+            <td>{{ fixed_expense.title }}</td>
+            <td>${{ fixed_expense.amount|floatformat:2 }}</td>
+            {% if fixed_expense.paid == True %}
+            <td>&checkmark;</td>
+            {% else %}
+            <td>X</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><strong>Total Fixed Expenses</strong></td>
+            <td><strong>${{ total_fixed_expenses_sum|floatformat:2 }}</strong></td>
+        </tr>
+    
+    </tbody>
+
+</table>
+<br/>
+<br/>
+<h1 style="text-align: center;">Variable Expenses</h1>
+<table class="table table-striped" id="Variable_Expenses">
+    <thead class="thead-dark">
+        <tr>
+            <th>Variable Expense</th>
+            <th>Starting Amount</th>
+            <th>Amount Left</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for variable_expense in variable_expenses_summary %}
+        <tr>
+            <td>{{ variable_expense.title }}</td>
+            <td>${{ variable_expense.starting_amount|floatformat:2 }}</td>
+            <td>${{ variable_expense.remaining_amount|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><strong>Total Variable Expenses</strong></td>
+            <td><strong>${{ total_variable_starting_amount_sum|floatformat:2 }}</strong></td>
+            <td><strong>${{ total_variable_expenses_sum|floatformat:2 }}</strong></td>
+        </tr>
+    
+    </tbody>
+
+</table>
+
+
+{% endblock content %}
