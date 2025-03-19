@@ -28,9 +28,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'z&a6w9iag_#3_qu2je@i#uj7&@ep3d2!!_^_!y-ak(idu+hlrs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['BTRSolutions.azurewebsites.net']
+ALLOWED_HOSTS = ['BTRSolutions.azurewebsites.net','127.0.0.1']
 
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'line_item',
-    'retirement',
+    #'retirement',
     'questions',
     'payment',
 
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    #'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -84,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+#WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
