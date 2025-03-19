@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="article-entry">
+    <h2>{{ assets.title }}</h2>
+    <h2>{{ assets.asset_type }}</h2>
+    <p>{{ assets.amount }}</p>
+    
+</div>
+
+<p><a href="{% url 'assets_edit' assets.pk %}">Edit</a> | <a href="{% url 'assets_delete' assets.pk %}">Delete</a></p>
+<p>Back to <a href="{% url 'assets_list' %}">All Assets</a>.</p>
+
+
+{% endblock content %}

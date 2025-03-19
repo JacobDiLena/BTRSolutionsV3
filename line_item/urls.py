@@ -1,0 +1,78 @@
+from django.urls import path
+from .views import (
+    IncomeListView,
+    IncomeUpdateView,
+    IncomeDetailView,
+    IncomeDeleteView,
+    IncomeCreateView,
+    FixedExpensesListView,
+    FixedExpensesUpdateView,
+    FixedExpensesDetailView,
+    FixedExpensesDeleteView,
+    FixedExpensesCreateView,
+    VariableExpensesListView,
+    VariableExpensesUpdateView,
+    VariableExpensesDetailView,
+    VariableExpensesDeleteView,
+    VariableExpensesCreateView,
+    SpendingListView,
+    SpendingUpdateView,
+    SpendingDetailView,
+    SpendingDeleteView,
+    SpendingCreateView,
+    SnapshotView,
+    AssetsListView,
+    AssetsCreateView,
+    AssetsUpdateView,
+    AssetsDeleteView,
+    AssetsDetailView,
+    LiabilitiesListView,
+    LiabilitiesCreateView,
+    LiabilitiesUpdateView,
+    LiabilitiesDeleteView,
+    LiabilitiesDetailView,
+    NetWorthCalculatorView,
+
+
+
+)                    
+
+
+urlpatterns = [
+    path('income/',IncomeListView.as_view(),name='income_list'),
+    path('income/<int:pk>/edit/',IncomeUpdateView.as_view(),name='income_edit'),
+    path('income/<int:pk>/',IncomeDetailView.as_view(),name='income_detail'),
+    path('income/<int:pk>/delete/',IncomeDeleteView.as_view(),name='income_delete'),
+    path('income/new/',IncomeCreateView.as_view(),name='income_new'),
+    path('fixed_expenses/',FixedExpensesListView.as_view(),name='fixed_expenses_list'),
+    path('fixed_expenses/<int:pk>/edit/',FixedExpensesUpdateView.as_view(),name='fixed_expenses_edit'),
+    path('fixed_expenses/<int:pk>/',FixedExpensesDetailView.as_view(),name='fixed_expenses_detail'),
+    path('fixed_expenses/<int:pk>/delete/',FixedExpensesDeleteView.as_view(),name='fixed_expenses_delete'),
+    path('fixed_expenses/new/',FixedExpensesCreateView.as_view(),name='fixed_expenses_new'),
+    path('variable_expenses/',VariableExpensesListView.as_view(),name='variable_expenses_list'),
+    path('variable_expenses/<int:pk>/edit/',VariableExpensesUpdateView.as_view(),name='variable_expenses_edit'),
+    path('variable_expenses/<int:pk>/',VariableExpensesDetailView.as_view(),name='variable_expenses_detail'),
+    path('variable_expenses/<int:pk>/delete/',VariableExpensesDeleteView.as_view(),name='variable_expenses_delete'),
+    path('variable_expenses/new/',VariableExpensesCreateView.as_view(),name='variable_expenses_new'),
+    path('spending/',SpendingListView.as_view(),name='spending_list'),
+    path('spending/<int:pk>/edit/',SpendingUpdateView.as_view(),name='spending_edit'),
+    path('spending/<int:pk>/',SpendingDetailView.as_view(),name='spending_detail'),
+    path('spending/<int:pk>/delete/',SpendingDeleteView.as_view(),name='spending_delete'),
+    path('spending/new/',SpendingCreateView.as_view(),name='spending_new'),
+    path('snapshot/',SnapshotView.as_view(),name='snapshot'),
+    path('assets/',AssetsListView.as_view(),name='assets_list'),
+    path('assets/new/',AssetsCreateView.as_view(),name='assets_new'),
+    path('assets/<int:pk>/edit/',AssetsUpdateView.as_view(),name='assets_edit'),
+    path('assets/<int:pk>/delete/',AssetsDeleteView.as_view(),name='assets_delete'),
+    path('assets/<int:pk>/',AssetsDetailView.as_view(),name='assets_detail'),
+    path('liabilities/',LiabilitiesListView.as_view(),name='liabilities_list'),
+    path('liabilities/new/',LiabilitiesCreateView.as_view(),name='liabilities_new'),
+    path('liabilities/<int:pk>/edit',LiabilitiesUpdateView.as_view(),name='liabilities_edit'),
+    path('liabilities/<int:pk>/delete',LiabilitiesDeleteView.as_view(),name='liabilities_delete'),
+    path('liabilities/<int:pk>/',LiabilitiesDetailView.as_view(),name='liabilities_detail'),
+    path('networth_calculator/',NetWorthCalculatorView.as_view(),name='networth_calculator'),
+
+
+
+
+]

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Payment Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .details {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Payment Receipt</div>
+    <div class="details">
+        <p><strong>Customer Email:</strong> {{ payment.customer_email }}</p>
+        <p><strong>Amount Paid:</strong> ${{ amount_dollars|floatformat:2 }}</p>
+        <p><strong>Card Brand:</strong> {{ payment.card_brand|default:"N/A" }}</p>
+        <p><strong>Card Last 4:</strong> {{ payment.card_last4|default:"N/A" }}</p>
+        <p><strong>Date:</strong> {{ payment.created_at|date:"F d, Y" }}</p>
+    </div>
+    <div class="footer">
+        Thank you for your payment!
+    </div>
+</body>
+</html>

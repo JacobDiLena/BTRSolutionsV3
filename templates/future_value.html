@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Investments Future Value{% endblock title %}
+
+{% block content %}
+
+<h1>Future Value Calculation</h1>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ form.pmt.id_for_label }}" class="form-label">Payment</label>
+            <br/>
+            {{ form.pmt }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.frequency.id_for_label }}" class="form-label">Frequency of Payments per Year</label>
+            {{ form.frequency }}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.pv.id_for_label }}" class="form-label">Present Value of Investments</label>
+            <br/>
+            ${{ form.pv}}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.num_years.id_for_label }}" class="form-label">Number of Years Until Retirement</label>
+            <br/>
+            {{ form.num_years }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.ir.id_for_label }}" class="form-label">Annual Interest Rate (%) Assumed</label>
+            <br/>
+            {{ form.ir }}%
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Calculate FV</button>
+    </form>
+<br/>
+<br/>
+{% if fv %}
+    <div class="mb-3">
+        <p>You could have <h3 style="color: green;text-decoration: underline;">${{ fv|floatformat:2}}</h3> in your retirement account if you invested ${{ pmt|floatformat:2 }} {{ frequency_display }} for {{ num_years|floatformat:0 }} years!</p>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock content %}
